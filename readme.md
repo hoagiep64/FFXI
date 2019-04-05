@@ -3,15 +3,15 @@ Use the settings file within the data folder to customize the display window pos
 Custom_JOB should be set to 0 for default. 1 for Custom.
 
 JobDisplay Custom Building
-•In the custom file you must specify what to display. Each column, 1 through 10, should have a function specified. A column number will need to be specified: IE) Ability_Display(1,1) would display Berserk as column one.
-•Please reference your Windower4\res folder for ability_recasts.lua and buffs.lua ID numbers.
+â€¢In the custom file you must specify what to display. Each column, 1 through 10, should have a function specified. A column number will need to be specified: IE) Ability_Display(1,1) would display Berserk as column one.
+â€¢Please reference your Windower4\res folder for ability_recasts.lua and buffs.lua ID numbers.
 
 Functions currently included:
 NOTE-Functions are case sensitive.
 
 Standard:
 Ability_Display(column,abil,buff,label) - Displays an ability, if it's on cooldown, and if the specified buff is active.
-•An abilitiy not learned, mertied or otherwise avaialble will result in an Empty(column).
+â€¢An abilitiy not learned, mertied, or otherwise unavailable will result in an Empty(column).
 Spell_Display(column,spell_id) -- Displays a spell and if it's on cooldown or not.
 Empty(column) -- Sets column to blank.
 Set_Display(column,value,color) -- Player input driven set displays.
@@ -49,7 +49,7 @@ Where jd is the windower command, column is the column number where you want to 
 
 Colors:
 There are 10 colors.
-8 follow windower's native element colors.
+8 follow windower's native element numbering.
 
     0 = Fire
     1 = Ice
@@ -64,7 +64,7 @@ Two JobDisplay colors:
 9 = Gray
 10 = White
 
-If you don't prefer to use numbers you may also enter the color name which is NOT case sensitive (fire,water,white,dark,etc...)
+If you don't prefer to use numbers you may also enter the color name which is NOT case sensitive (fire,water,white,dark,gray,purple,etc...)
 
 Set Command:
 Similar to free-form input however it defaults the label to "Set: "
