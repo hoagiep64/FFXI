@@ -13,12 +13,11 @@ function refresh_BLM()
 		Ability_Display(4,38,79)
 		--5-- Enmity Douse
 		Ability_Display(5,34)
-		--6-- Cascade
-		Ability_Display(6,12,598)
-		--7-- Subjob
-		Subjob_Display(7)
-		--8-- MP
-		MPP_Display(8)
+		--6-- Subjob
+		Subjob_Display(6)
+		--7-- MP
+		MPP_Display(7)
+		Empty(8)
 		Empty(9)
 		Empty(10)
 	end
