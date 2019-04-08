@@ -358,6 +358,86 @@ function TP_Display(column) -- Displays Player's current TP% with varying colors
 	Finalize_Column(col,lab,val,ccol) -- column, label, value, column color
 end
 
+function Party_Member_HP_Display(column,member) -- Displays a single party member's HP% (member 1-6)
+	local lab
+	local ccol
+	local val
+	local party = windower.ffxi.get_party()
+	if member == 1 then
+		if party.p0 == nil then
+			lab = "N/A"
+			val = ""
+			ccol = Inactive_col
+		else
+			lab = party.p0.name..': '
+			val = party.p0.hpp
+		end		
+	elseif member == 2 then
+		if party.p1 == nil then
+			lab = "N/A"
+			val = ""
+			ccol = Inactive_col
+		else
+			lab = party.p1.name..': '
+			val = party.p1.hpp
+		end	
+	elseif member == 3 then
+		if party.p2 == nil then
+			lab = "N/A"
+			val = ""
+			ccol = Inactive_col
+		else
+			lab = party.p2.name..': '
+			val = party.p2.hpp
+		end		
+	elseif member == 4 then
+		if party.p3 == nil then
+			lab = "N/A"
+			val = ""
+			ccol = Inactive_col
+		else
+			lab = party.p3.name..': '
+			val = party.p3.hpp
+		end	
+	elseif member == 5 then
+		if party.p4 == nil then
+			lab = "N/A"
+			val = ""
+			ccol = Inactive_col
+		else
+			lab = party.p4.name..': '
+			val = party.p4.hpp
+		end		
+	elseif member == 6 then
+		if party.p5 == nil then
+			lab = "N/A"
+			val = ""
+			ccol = Inactive_col
+		else
+			lab = party.p5.name..': '
+			val = party.p5.hpp
+		end	
+	end
+		
+	if val == 100 then
+		ccol = Blizzard_col
+	elseif val > 74 then
+		ccol = Aero_col
+	elseif val > 33 then
+		ccol = Stone_col
+	elseif val > 0 then
+		ccol = Fire_col
+	else
+		ccol = Inactive_col
+	end	
+	
+	if val ~= "" then
+		val = val..'%'
+	end
+	
+	Finalize_Column(column,lab,val,ccol)
+end
+
 function Buff_Display(column,buff_id) -- Displays a status effect and whether it's active or not.
 	local lab = res.buffs[buff_id].en..': '
 	local val
@@ -891,12 +971,17 @@ windower.register_event('addon command',function(column,label,value,color)
 	elseif cmd == 'hide' then
 		image:hide()
 		return
-	elseif cmd == 'unpause' then
+	elseif cmd == 'unpause' and pause == true then
 		image:show()
 		pause = false
-		abilities = T{}
-		GetAbilities()
-		windower.send_command('wait 2;jd update')
+		Initialize()
+		return
+	elseif cmd == 'init' then
+		if windower.ffxi.get_info().logged_in == true then
+			Initialize()
+		else
+			windower.send_command('wait 3;jd init')
+		end
 		return
 	end
 	
@@ -1002,14 +1087,12 @@ end
 windower.register_event('gain buff', function(new, old)
     if new == 157 or new == 269 or new == 143 then -- SJ/LvlSync/Lvl Restrictions
 		pause = true
-		image:hide()
 	end
 end)
 
 windower.register_event('lose buff', function(new, old)
     if new == 157 or new == 269 or new == 143 then -- SJ/LvlSync/Lvl Restrictions
 		pause = true
-		image:hide()
 	end
 end)
 
@@ -1018,22 +1101,29 @@ windower.register_event('logout', function(new, old)
 	stop = true
 end)
 
-windower.register_event('login', function(new, old)
+--[[windower.register_event('login', function(new, old)
     windower.send_command('wait 7;lua r jobdisplay')
+end)--]]
+
+windower.register_event('job change', function(new, old)
+    --windower.send_command('lua r jobdisplay')
+	pause = true
 end)
 
 windower.register_event('zone change', function(new, old)
-    image:hide()
+    --windower.send_command('lua r jobdisplay')
 	pause = true
-	job = windower.ffxi.get_player().main_job
-	sub = windower.ffxi.get_player().sub_job
-end)
-
-windower.register_event('job change', function(new, old)
-    windower.send_command('lua r jobdisplay')
 end)
 
 windower.register_event('load', function(new, old)
+	if windower.ffxi.get_info().logged_in == true then
+		Initialize()
+	else
+		windower.send_command('wait 3;jd init')
+	end
+end)
+
+function Initialize()
 	abilities = T{}
 	GetAbilities()
 	job = windower.ffxi.get_player().main_job
@@ -1135,18 +1225,13 @@ windower.register_event('load', function(new, old)
 	--(windower.ffxi.get_mob_by_target('p1')
 	--(windower.ffxi.get_player())
 
-	--for k,v in pairs(windower.ffxi.get_player().buffs) do
+	--for k,v in pairs(windower.ffxi.get_key_items()) do
 		--windower.add_to_chat(2, tostring(k)..' '..tostring(v))
 	--end
 	windower.send_command('wait 1;jd update')
 	image:show()
-end)
+end
 
 windower.register_event('prerender', function(new,old)
-	if job == 'WHM' then
-		draw_WHM()
-	else
-		draw()
-	end
-	return
+	draw()
 end)
