@@ -26,7 +26,7 @@
 -- SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 _addon.name    = 'JobDisplay'
-_addon.author  = 'Paulu'
+_addon.author  = 'Paulu of Shiva'
 _addon.version = '1.0'
 _addon.command = 'jd'
 
@@ -1101,9 +1101,9 @@ windower.register_event('logout', function(new, old)
 	stop = true
 end)
 
---[[windower.register_event('login', function(new, old)
+windower.register_event('login', function(new, old)
     windower.send_command('wait 7;lua r jobdisplay')
-end)--]]
+end)
 
 windower.register_event('job change', function(new, old)
     --windower.send_command('lua r jobdisplay')
@@ -1128,7 +1128,7 @@ function Initialize()
 	GetAbilities()
 	job = windower.ffxi.get_player().main_job
 	sub = windower.ffxi.get_player().sub_job
-
+	
 	if job == 'WAR' then
 		require('defaults/war')
 		require('custom/war')
@@ -1228,6 +1228,7 @@ function Initialize()
 	--for k,v in pairs(windower.ffxi.get_key_items()) do
 		--windower.add_to_chat(2, tostring(k)..' '..tostring(v))
 	--end
+	
 	windower.send_command('wait 1;jd update')
 	image:show()
 end
