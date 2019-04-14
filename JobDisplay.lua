@@ -119,7 +119,7 @@ end
 -- Using the ability_recasts ID, displays the JA name and readiness.
 function Ability_Display(column,abil,buff,label) -- (Column #) (Ability_recast ID) (buff ID) (Custom Label)
 	local abilityName = res.ability_recasts[abil].en
-	if abilities:find(res.ability_recasts[abil].action_id) or abilityName == 'Phantom Roll' or abilityName == 'Sic/Ready' or abilityName == 'Random Deal' then -- Confirm the ability ID entered is valid in current context
+	if abilities:find(res.ability_recasts[abil].action_id) or abilityName == 'Phantom Roll' or abilityName == 'Sic/Ready' or abilityName == 'Random Deal' or abilityName == "Blood Pact: Ward" or abilityName == "Blood Pact: Rage" then -- Confirm the ability ID entered is valid in current context
 		local ability = windower.ffxi.get_ability_recasts()[abil]
 		local lab
 		local val
@@ -131,7 +131,7 @@ function Ability_Display(column,abil,buff,label) -- (Column #) (Ability_recast I
 				val = " O"
 				ccol = Aero_col
 				lab = abilityName..': '
-			elseif ability < 12 then
+			elseif ability < 10 then
 				val = " X"
 				ccol = Stone_col
 			else
@@ -153,7 +153,7 @@ function Ability_Display(column,abil,buff,label) -- (Column #) (Ability_recast I
 			elseif ability > 0 and BuffActive(buff) == true then
 				val = " X"
 				ccol = Blizzard_col
-			elseif ability < 12 then
+			elseif ability < 10 then
 				val = " X"
 				ccol = Stone_col
 			else
@@ -661,7 +661,7 @@ function Favor_Display(column) -- Displays Player's current active Avatar's Favo
 			ccol = Inactive_col
 		end
 	else
-		val = 'None'
+		val = '--'
 		ccol = Inactive_col
 	end
 	Finalize_Column(column,lab,val,ccol)
