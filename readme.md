@@ -4,7 +4,7 @@ Custom_JOB should be set to 0 for default. 1 for Custom.
 
 JobDisplay Custom Building
 •In the custom file you must specify what to display. Each column, 1 through 10, should have a function specified. A column number will need to be specified: IE) Ability_Display(1,1) would display Berserk as column one.
-•Please reference your Windower4\res folder for ability_recasts.lua and buffs.lua ID numbers.
+•Please reference your `Windower4\res folder for ability_recasts.lua` and `buffs.lua` for ID numbers.
 
 Functions currently included:
 NOTE-Functions are case sensitive.
