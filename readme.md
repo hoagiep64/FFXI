@@ -10,12 +10,12 @@ Functions currently included:
 NOTE-Functions are case sensitive.
 
 Standard:
->   Ability_Display(column,abil,buff,label) - Displays an ability, if it's on cooldown, and if the specified buff is active.
+>   `Ability_Display(column,abil,buff,label)` - Displays an ability, if it's on cooldown, and if the specified buff is active.
 •An abilitiy not learned, mertied, or otherwise unavailable will result in an Empty(column).
-Spell_Display(column,spell_id) -- Displays a spell and if it's on cooldown or not.
-Empty(column) -- Sets column to blank.
-Set_Display(column,value,color) -- Player input driven set displays.
-Subjob_Display(column) -- Displays one PREDETERMINED subjob ability
+`Spell_Display(column,spell_id)` -- Displays a spell and if it's on cooldown or not.
+`Empty(column)` -- Sets column to blank.
+`Set_Display(column,value,color)` -- Player input driven set displays.
+`Subjob_Display(column)` -- Displays one PREDETERMINED subjob ability
 
 Additional:
 
