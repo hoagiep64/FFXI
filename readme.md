@@ -10,7 +10,7 @@ Functions currently included:
 NOTE-Functions are case sensitive.
 
 Standard:
-Ability_Display(column,abil,buff,label) - Displays an ability, if it's on cooldown, and if the specified buff is active.
+>   Ability_Display(column,abil,buff,label) - Displays an ability, if it's on cooldown, and if the specified buff is active.
 •An abilitiy not learned, mertied, or otherwise unavailable will result in an Empty(column).
 Spell_Display(column,spell_id) -- Displays a spell and if it's on cooldown or not.
 Empty(column) -- Sets column to blank.
@@ -18,7 +18,8 @@ Set_Display(column,value,color) -- Player input driven set displays.
 Subjob_Display(column) -- Displays one PREDETERMINED subjob ability
 
 Additional:
-Arts_Display(column) -- Custom display of Light/Dark Arts.
+
+>   Arts_Display(column) -- Custom display of Light/Dark Arts.
 Sic_Ready_Display(column,gear) -- Custom handling of Ready Timer. A numeric entry in seconds is required for gear if you use gear to cut the recast on Ready Charges down.
 Strategem_Display(column) -- Displays the number of currently available Strategems.
 Hasso_Seigan_Display(column) -- Displays Third Eye or Hasso and their recast when active. Otherwise defaults to Seigan.
@@ -35,7 +36,7 @@ Range_Display(column) -- Will call Ammo_Display ONLY if Player has a 'Range' equ
 Ammo_Display(column) -- Displays equipped 'Ammo' name and current count. Use Range_Display() unless tracking throwing items/petMeds.
 Favor_Display(column) -- Displays Player's current active Avatar's Favor effect
 Pet_Display(column) -- Pet's Current HP%
-Set_Display(column,value,color) -- Player input driven set display for use with 'jd set' command.
+Set_Display(column,value,color) -- Player input driven; set display for use with 'jd set' command.
 
 Free-form input:
 To enter whatever you want as a custom display you may the following command:
@@ -49,7 +50,7 @@ Where jd is the windower command, column is the column number where you want to 
 
 Colors:
 There are 10 colors.
-8 follow windower's native element numbering.
+8 follow windower's native element numbering and 2 exclusive colors(9 and 10).
 
     0 = Fire
     1 = Ice
@@ -59,10 +60,8 @@ There are 10 colors.
     5 = Water
     6 = Light
     7 = Dark
-
-Two JobDisplay colors:
-9 = Gray
-10 = White
+    9 = Gray
+    10 = White
 
 If you don't prefer to use numbers you may also enter the color name which is NOT case sensitive (fire,water,white,dark,gray,purple,etc...)
 
