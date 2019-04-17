@@ -12,10 +12,14 @@ NOTE-Functions are case sensitive.
 Standard:
 >   `Ability_Display(column,abil,buff,label)` - Displays an ability, if it's on cooldown, and if the specified buff is active.
 •An abilitiy not learned, mertied, or otherwise unavailable will result in an Empty(column).
-`Spell_Display(column,spell_id)` -- Displays a spell and if it's on cooldown or not.
-`Empty(column)` -- Sets column to blank.
-`Set_Display(column,value,color)` -- Player input driven set displays.
-`Subjob_Display(column)` -- Displays one PREDETERMINED subjob ability
+
+>   `Spell_Display(column,spell_id)` -- Displays a spell and if it's on cooldown or not.
+
+>   `Empty(column)` -- Sets column to blank.
+
+>   `Set_Display(column,value,color)` -- Player input driven set displays.
+
+>   `Subjob_Display(column)` -- Displays one PREDETERMINED subjob ability
 
 Additional:
 
@@ -59,11 +63,14 @@ Free-form input:
 To enter whatever you want as a custom display you may the following command:
 
 Ingame chat: `//jd column label value color`
+
 Ingame windower-console: `jd column label value color`
+
 Ingame macro: `/con jd column label value color`
+
 Gearswap: `windower.send_command('jd column label value color')`
 
-Where jd is the windower command, column is the column number where you want to insert your display, label is what you want displayed before the value, and color of said value.
+Where `jd` is the windower command, `column` is the column number where you want to insert your display, `label` is what you want displayed before the `value`, and `color` of said value.
 
 Colors:
 There are 10 colors.
