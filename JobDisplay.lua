@@ -721,15 +721,18 @@ function Strategem_Display(column) -- Displays the number of currently available
 		local recast = windower.ffxi.get_ability_recasts()[231]
 		if sch_jp > 549 then
 			if recast == 0 then
-				val = '4'
+				val = '5'
 				ccol = Blizzard_col
 			elseif recast < 33 then
-				val = '3'
+				val = '4'
 				ccol = Aero_col	
 			elseif recast < 66 then
-				val = '2'
+				val = '3'
 				ccol = Stone_col
 			elseif recast < 99 then
+				val = '2'
+				ccol = Stone_col
+			elseif recast > 0 then
 				val = '1'
 				ccol = Light_col
 			else
@@ -738,21 +741,24 @@ function Strategem_Display(column) -- Displays the number of currently available
 			end			
 		else
 			if recast == 0 then
-				val = '4'
+				val = '5'
 				ccol = Blizzard_col
 			elseif recast < 48 then
-				val = '3'
+				val = '4'
 				ccol = Aero_col	
 			elseif recast < 96 then
-				val = '2'
+				val = '3'
 				ccol = Stone_col
 			elseif recast < 144 then
+				val = '2'
+				ccol = Stone_col
+			elseif recast > 0 then
 				val = '1'
 				ccol = Light_col
 			else
 				val = '0'
 				ccol = Fire_col
-			end	
+			end		
 		end
 		Finalize_Column(column,lab,val,ccol) 
 	else
@@ -1106,8 +1112,7 @@ windower.register_event('login', function(new, old)
 end)
 
 windower.register_event('job change', function(new, old)
-    --windower.send_command('lua r jobdisplay')
-	pause = true
+    windower.send_command('lua r jobdisplay')
 end)
 
 windower.register_event('zone change', function(new, old)
